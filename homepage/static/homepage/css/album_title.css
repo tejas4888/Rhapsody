@@ -1,0 +1,35 @@
+@font-face {
+  font-family: madpakke;
+  src: url('../fonts/madpakke-demo/madpakkeDEMO.otf');
+}
+
+@font-face {
+  font-family: adellove;
+  src: url('../fonts/adellove/Adellove.ttf');
+}
+
+@font-face {
+  font-family: cassandra;
+  src: url('../fonts/billy-argel_cassandra-personal-use/cass_pers.ttf');
+}
+
+@font-face {
+  font-family: graceland;
+  src: url('../fonts/billy-argel_graceland-personal-use/grace_per.ttf');
+}
+
+@font-face {
+  font-family: vegan;
+  src: url('../fonts/billy-argel_vegan-style-personal-use/vegan_style.ttf');
+}
+
+
+h1{
+    font-size: 80px;
+    text-align: right;
+    font-family: madpakke;
+}
+
+p{
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+}

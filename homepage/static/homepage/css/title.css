@@ -1,0 +1,10 @@
+@font-face {
+  font-family: madpakke;
+  src: url('../fonts/madpakke-demo/madpakkeDEMO.otf');
+}
+
+h1{
+    font-size: 80px;
+    margin-left: 348px;
+    font-family: madpakke;
+}

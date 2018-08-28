@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static "homepage/css/album_detail.css"%}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>{{ current_song.song_title }}</title>
+
+    <style>
+      .content { position: relative; height: 660px;}
+      .content div { position: absolute; width: 45%;}
+      .blue { top: 60px; right: 100px;   background: linear-gradient(to right, #000000, #25b7c4); }
+      .green { top: 60px; left: 15px; }
+        .yellow{width: 96%; vertical-align: baseline;position:fixed; bottom:2%;}
+    </style>
+
+</head>
+
+
+<div class="content">
+      <div class="blue" style="position:fixed; top:10%; right:2%">
+          <img style="max-height: 350px;" src="{% static current_song.song_image %}">
+      </div>
+      <div class="green" style="margin-bottom: 100px; ">
+                  <link rel="stylesheet" href="{% static 'homepage/css/album_title.css' %}">
+        <h1>{{ current_song.song_title }}</h1>
+          <p style="text-align: right"><strong>By <a style="color: #000000; text-underline: transparent" href="{% url 'artist_detail' current_song.song_artist_id %}">{{ current_song.song_artist }}</a></strong></p>
+
+          <p style="text-align: right">
+          {% for song_line in song_lines %}
+            {{ song_line }}<br>
+          {% endfor %}
+            </p>
+      <h1>Comments</h1>
+
+      <form method="post">
+        {% csrf_token %}
+        <input id="comment_text" name="comment_text" type="text" style="padding:8px;border-top-left-radius: 1rem;
+border-top-right-radius: 1rem;width: 100%"/>
+          <input style="width: 100%;border-bottom-left-radius: 1rem;
+border-bottom-right-radius: 1rem" type="submit">
+        </form>
+
+      <br>
+            <div style="border-radius: 0.1875rem;box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08); width: 100%; margin-bottom: 100px">
+                <table>
+                {% for comment in all_comments %}
+                    <tr>
+                    <td style="background: white;width:35%;padding: 8px;border-top-left-radius: 1rem;
+border-bottom-left-radius: 1rem">{{ comment.comment_text }}</td>
+                    <td style="width:20%; padding: 4px;padding-right: 12px;border-bottom-right-radius:1rem;border-top-right-radius: 1rem ;background: #ffc107;text-align: right">{{ comment.comment_user }}<br>{{ comment.comment_datetime }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+
+      </div>
+
+    <div >
+    <audio controls class="yellow">
+        <source src="{% static current_song.song_path %}" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    </div>
+</div>
+</body>
+</html>
